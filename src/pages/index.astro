@@ -20,8 +20,10 @@ const description =
         --text: #edf2ff;
         --muted: #b6c0e4;
         --accent: #7c9cff;
+        --line: #273362;
       }
       * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       body {
         margin: 0;
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
@@ -42,9 +44,11 @@ const description =
         padding: 0.75rem 1.1rem;
         border-radius: 12px;
         font-weight: 600;
+        border: 1px solid transparent;
+        cursor: pointer;
       }
       .btn.primary { background: var(--accent); color: #0b1020; }
-      .btn.ghost { border: 1px solid #36467f; color: var(--text); }
+      .btn.ghost { border-color: #36467f; color: var(--text); }
       .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -53,12 +57,71 @@ const description =
       }
       .card {
         background: color-mix(in oklab, var(--card), black 8%);
-        border: 1px solid #273362;
+        border: 1px solid var(--line);
         border-radius: 14px;
         padding: 1rem;
       }
       h2 { margin-top: 0; font-size: 1.05rem; }
       .section { margin-top: 2.2rem; }
+
+      .screenshots {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1rem;
+      }
+      .shot {
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        overflow: hidden;
+        background: #0f1530;
+      }
+      .shot .ph {
+        aspect-ratio: 16 / 10;
+        background: linear-gradient(135deg, #1c2750, #0e1430);
+        display: grid;
+        place-items: center;
+        color: #9cb0ff;
+        font-weight: 600;
+      }
+      .shot p { margin: 0; padding: 0.8rem; }
+
+      .waitlist {
+        text-align: center;
+      }
+      .waitlist form {
+        margin-top: 1rem;
+        display: flex;
+        gap: 0.6rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      input[type="email"] {
+        min-width: 280px;
+        max-width: 420px;
+        width: 100%;
+        border: 1px solid #3a4b87;
+        background: #0c1230;
+        color: var(--text);
+        padding: 0.75rem 0.9rem;
+        border-radius: 12px;
+      }
+
+      details {
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 0.8rem 1rem;
+        background: #0f1530;
+      }
+      details + details { margin-top: 0.7rem; }
+      summary {
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      .final-cta {
+        text-align: center;
+      }
+
       footer {
         margin-top: 3rem;
         color: #98a6d8;
@@ -69,7 +132,7 @@ const description =
   </head>
   <body>
     <main class="container">
-      <section class="hero">
+      <section class="hero" id="top">
         <p style="margin:0;opacity:.9;">Momentum for macOS</p>
         <h1>Track your real project time, not guesses.</h1>
         <p class="lead">
@@ -77,12 +140,12 @@ const description =
           and review where your time actually goes. Plus, log instantly with the Raycast extension.
         </p>
         <div class="actions">
-          <a class="btn primary" href="#">Get early access</a>
-          <a class="btn ghost" href="#">See how it works</a>
+          <a class="btn primary" href="#waitlist">Join waitlist</a>
+          <a class="btn ghost" href="#how">See how it works</a>
         </div>
       </section>
 
-      <section class="grid section">
+      <section class="grid section" id="how">
         <article class="card">
           <h2>Fast capture</h2>
           <p>Start/stop logs quickly so tracking never interrupts your flow.</p>
@@ -97,12 +160,54 @@ const description =
         </article>
       </section>
 
-      <section class="section card">
-        <h2>Built for focused sprints</h2>
-        <p>
-          Designed for developers and makers who work in intense, short cycles. Keep the data,
-          cut the friction, and ship with confidence.
-        </p>
+      <section class="section">
+        <h2>Screenshots</h2>
+        <div class="screenshots">
+          <article class="shot">
+            <div class="ph">Dashboard screenshot</div>
+            <p>See project totals and trend of focused sessions.</p>
+          </article>
+          <article class="shot">
+            <div class="ph">Session logging screenshot</div>
+            <p>Log time in seconds and keep momentum in deep work blocks.</p>
+          </article>
+          <article class="shot">
+            <div class="ph">Raycast extension screenshot</div>
+            <p>Capture from anywhere without leaving your current app.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section card waitlist" id="waitlist">
+        <h2>Get early access</h2>
+        <p>Be the first to try Momentum and get launch updates.</p>
+        <form action="https://formspree.io/f/your-form-id" method="POST">
+          <input type="email" name="email" placeholder="you@domain.com" required />
+          <button class="btn primary" type="submit">Join waitlist</button>
+        </form>
+        <p style="font-size:.9rem;margin-top:.8rem;">Tip: replace the Formspree endpoint with your own.</p>
+      </section>
+
+      <section class="section" id="faq">
+        <h2>FAQ</h2>
+        <details>
+          <summary>When will Momentum launch?</summary>
+          <p>I’m polishing the final version and collecting early feedback now.</p>
+        </details>
+        <details>
+          <summary>Is it only for developers?</summary>
+          <p>No. It’s optimized for makers, but anyone doing project-based work can use it.</p>
+        </details>
+        <details>
+          <summary>Will there be a free trial?</summary>
+          <p>Most likely yes. Early users will get launch details first.</p>
+        </details>
+      </section>
+
+      <section class="section card final-cta">
+        <h2>Ready to track your real output?</h2>
+        <p>Skip spreadsheets. Keep your focus. Ship more with clear time data.</p>
+        <a class="btn primary" href="#waitlist">Join waitlist</a>
       </section>
 
       <footer>
