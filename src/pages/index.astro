@@ -1,7 +1,7 @@
 ---
 const title = 'Momentum — Time tracking for makers';
 const description =
-  'Track project time without friction. Built for focused developers and creators. Includes a Raycast extension for instant logging.';
+  'Momentum helps makers track real project time in seconds, with a frictionless macOS workflow and Raycast extension.';
 ---
 
 <html lang="en">
@@ -37,7 +37,7 @@ const description =
       }
       h1 { font-size: clamp(2rem, 6vw, 3.6rem); margin: 0 0 0.8rem; }
       p { color: var(--muted); line-height: 1.6; }
-      .lead { max-width: 720px; margin: 0 auto 1.5rem; }
+      .lead { max-width: 760px; margin: 0 auto 1.5rem; }
       .actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
       .btn {
         text-decoration: none;
@@ -85,9 +85,7 @@ const description =
       }
       .shot p { margin: 0; padding: 0.8rem; }
 
-      .waitlist {
-        text-align: center;
-      }
+      .waitlist { text-align: center; }
       .waitlist form {
         margin-top: 1rem;
         display: flex;
@@ -113,14 +111,9 @@ const description =
         background: #0f1530;
       }
       details + details { margin-top: 0.7rem; }
-      summary {
-        cursor: pointer;
-        font-weight: 600;
-      }
+      summary { cursor: pointer; font-weight: 600; }
 
-      .final-cta {
-        text-align: center;
-      }
+      .final-cta { text-align: center; }
 
       footer {
         margin-top: 3rem;
@@ -134,10 +127,11 @@ const description =
     <main class="container">
       <section class="hero" id="top">
         <p style="margin:0;opacity:.9;">Momentum for macOS</p>
-        <h1>Track your real project time, not guesses.</h1>
+        <h1>Know where your project time actually goes.</h1>
         <p class="lead">
-          Momentum helps you log focused work sessions in seconds, organize by project,
-          and review where your time actually goes. Plus, log instantly with the Raycast extension.
+          Most makers don't have a time problem — they have a visibility problem. Momentum lets you log sessions in seconds,
+          organize work by project, and review your week with data you can trust. No spreadsheets. No admin overhead.
+          Just clear signal on what is moving your work forward.
         </p>
         <div class="actions">
           <a class="btn primary" href="#waitlist">Join waitlist</a>
@@ -147,16 +141,16 @@ const description =
 
       <section class="grid section" id="how">
         <article class="card">
-          <h2>Fast capture</h2>
-          <p>Start/stop logs quickly so tracking never interrupts your flow.</p>
+          <h2>Capture in seconds</h2>
+          <p>Start and stop sessions fast, so tracking supports flow instead of breaking it.</p>
         </article>
         <article class="card">
-          <h2>Project-first</h2>
-          <p>Group sessions by project to understand effort and priorities clearly.</p>
+          <h2>Organize by project</h2>
+          <p>Group your time where it matters and spot what deserves more attention.</p>
         </article>
         <article class="card">
-          <h2>Raycast extension</h2>
-          <p>Capture time from anywhere with quick commands, no context switching.</p>
+          <h2>Log from Raycast</h2>
+          <p>Use the built-in Raycast extension to track instantly from anywhere on macOS.</p>
         </article>
       </section>
 
@@ -165,22 +159,25 @@ const description =
         <div class="screenshots">
           <article class="shot">
             <div class="ph">Dashboard screenshot</div>
-            <p>See project totals and trend of focused sessions.</p>
+            <p>Quickly see project totals, trends, and where your focus is really going.</p>
           </article>
           <article class="shot">
             <div class="ph">Session logging screenshot</div>
-            <p>Log time in seconds and keep momentum in deep work blocks.</p>
+            <p>Log focused work in seconds and keep momentum through your sprint blocks.</p>
           </article>
           <article class="shot">
             <div class="ph">Raycast extension screenshot</div>
-            <p>Capture from anywhere without leaving your current app.</p>
+            <p>Track without context switching. One shortcut, one command, done.</p>
           </article>
         </div>
       </section>
 
       <section class="section card waitlist" id="waitlist">
         <h2>Get early access</h2>
-        <p>Be the first to try Momentum and get launch updates.</p>
+        <p>
+          Momentum is currently in the final polish phase. Join the waitlist to get launch updates,
+          early access, and first release notes.
+        </p>
         <form action="https://formspree.io/f/your-form-id" method="POST">
           <input type="email" name="email" placeholder="you@domain.com" required />
           <button class="btn primary" type="submit">Join waitlist</button>
@@ -191,22 +188,22 @@ const description =
       <section class="section" id="faq">
         <h2>FAQ</h2>
         <details>
-          <summary>When will Momentum launch?</summary>
-          <p>I’m polishing the final version and collecting early feedback now.</p>
+          <summary>Who is Momentum for?</summary>
+          <p>Developers, designers, and makers doing project-based work who want clear time data with minimal friction.</p>
         </details>
         <details>
-          <summary>Is it only for developers?</summary>
-          <p>No. It’s optimized for makers, but anyone doing project-based work can use it.</p>
+          <summary>Do I need to track every minute?</summary>
+          <p>No. Momentum is built for practical clarity, not micromanagement. Track enough to make better decisions.</p>
         </details>
         <details>
-          <summary>Will there be a free trial?</summary>
-          <p>Most likely yes. Early users will get launch details first.</p>
+          <summary>What's the main difference vs generic trackers?</summary>
+          <p>Speed and focus. Momentum is optimized for maker workflows, with a native macOS flow and Raycast support.</p>
         </details>
       </section>
 
       <section class="section card final-cta">
-        <h2>Ready to track your real output?</h2>
-        <p>Skip spreadsheets. Keep your focus. Ship more with clear time data.</p>
+        <h2>Track less. Understand more. Ship better.</h2>
+        <p>Turn weekly time logs into better prioritization and faster product progress.</p>
         <a class="btn primary" href="#waitlist">Join waitlist</a>
       </section>
 
