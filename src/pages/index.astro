@@ -16,20 +16,26 @@ const description =
     <meta name="description" content={description} />
     <style>
       :root {
-        --bg: #0b1020;
-        --card: #141b34;
+        --bg: #070b17;
+        --bg-2: #0d1328;
+        --card: rgba(20, 27, 52, 0.72);
         --text: #edf2ff;
         --muted: #b6c0e4;
-        --accent: #7c9cff;
-        --line: #273362;
+        --accent: #8ea9ff;
+        --line: #2a3667;
+        --ok: #8ee4b7;
       }
       * { box-sizing: border-box; }
       html { scroll-behavior: smooth; color-scheme: dark; }
       body {
         margin: 0;
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
-        background: radial-gradient(circle at top, #151f3e 0%, var(--bg) 55%);
+        background:
+          radial-gradient(circle at 85% -10%, rgba(132, 156, 255, 0.25), transparent 35%),
+          radial-gradient(circle at 10% 10%, rgba(91, 129, 255, 0.22), transparent 30%),
+          linear-gradient(170deg, var(--bg-2), var(--bg));
         color: var(--text);
+        min-height: 100vh;
         -webkit-tap-highlight-color: rgba(124, 156, 255, 0.2);
       }
       .skip-link {
@@ -43,19 +49,98 @@ const description =
       }
       .skip-link:focus-visible { left: 1rem; top: 1rem; z-index: 9999; }
 
-      .container { max-width: 980px; margin: 0 auto; padding: 2rem 1rem 4rem; }
-      .hero { text-align: center; padding: 3.5rem 1rem 2rem; }
+      .container { max-width: 1080px; margin: 0 auto; padding: 1.2rem 1rem 4.5rem; }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.6rem;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 700;
+      }
+      .brand-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 99px;
+        background: var(--accent);
+        box-shadow: 0 0 24px rgba(142, 169, 255, 0.8);
+      }
+      .nav-links {
+        display: inline-flex;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+      .nav-links a {
+        color: #c6d0f3;
+        text-decoration: none;
+        font-size: 0.93rem;
+      }
+      .nav-links a:hover { color: #fff; }
+
+      .hero {
+        position: relative;
+        border: 1px solid var(--line);
+        background: linear-gradient(145deg, rgba(28, 39, 80, 0.55), rgba(15, 22, 48, 0.55));
+        border-radius: 22px;
+        padding: 2.2rem;
+        overflow: hidden;
+      }
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -35% -45% auto;
+        width: 480px;
+        height: 480px;
+        border-radius: 100%;
+        background: radial-gradient(circle, rgba(142, 169, 255, 0.18), transparent 60%);
+        pointer-events: none;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: rgba(144, 170, 255, 0.14);
+        border: 1px solid rgba(160, 182, 255, 0.35);
+        border-radius: 999px;
+        color: #dbe4ff;
+        padding: 0.35rem 0.7rem;
+        font-size: 0.82rem;
+        margin-bottom: 0.95rem;
+      }
+
       h1 {
+        margin: 0;
         font-size: clamp(2rem, 6vw, 3.6rem);
-        margin: 0 0 0.8rem;
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        max-width: 13ch;
         text-wrap: balance;
       }
-      p { color: var(--muted); line-height: 1.6; }
-      .lead { max-width: 760px; margin: 0 auto 1.5rem; }
-      .actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+      .lead {
+        margin: 0.9rem 0 0;
+        max-width: 65ch;
+        color: var(--muted);
+        font-size: 1.03rem;
+      }
+      .hero-actions {
+        margin-top: 1.4rem;
+        display: flex;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
       .btn {
         text-decoration: none;
-        padding: 0.75rem 1.1rem;
+        padding: 0.75rem 1rem;
         border-radius: 12px;
         font-weight: 600;
         border: 1px solid transparent;
@@ -66,92 +151,164 @@ const description =
       .btn:hover { transform: translateY(-1px); }
       .btn:focus-visible,
       input:focus-visible,
-      summary:focus-visible {
+      summary:focus-visible,
+      .nav-links a:focus-visible {
         outline: 2px solid var(--accent);
         outline-offset: 2px;
+        border-radius: 8px;
       }
       .btn.primary { background: var(--accent); color: #0b1020; }
-      .btn.primary:hover { background: #92adff; }
-      .btn.ghost { border-color: #36467f; color: var(--text); }
-      .btn.ghost:hover { background: #1a2448; }
+      .btn.primary:hover { background: #a5bbff; }
+      .btn.ghost { border-color: #425590; color: var(--text); }
+      .btn.ghost:hover { background: rgba(26, 36, 72, 0.75); }
+
+      .proof {
+        margin-top: 1.2rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+      }
+      .pill {
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.38rem 0.72rem;
+        color: #c8d3fa;
+        font-size: 0.86rem;
+        background: rgba(13, 19, 40, 0.55);
+      }
+
+      .section { margin-top: 2.2rem; scroll-margin-top: 1.5rem; }
+      h2 {
+        margin: 0 0 0.7rem;
+        font-size: 1.35rem;
+        letter-spacing: -0.01em;
+        text-wrap: balance;
+      }
+      .section-intro {
+        margin: 0;
+        color: var(--muted);
+        max-width: 68ch;
+      }
 
       .grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 1rem;
-        margin-top: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 0.9rem;
+        margin-top: 1rem;
       }
       .card {
-        background: color-mix(in oklab, var(--card), black 8%);
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1rem;
+        backdrop-filter: blur(8px);
+      }
+      .card h3 {
+        margin: 0;
+        font-size: 1.03rem;
+      }
+      .card p {
+        margin: 0.55rem 0 0;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      .steps {
+        margin-top: 1rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 0.8rem;
+      }
+      .step {
         border: 1px solid var(--line);
         border-radius: 14px;
-        padding: 1rem;
+        padding: 0.9rem;
+        background: rgba(12, 18, 48, 0.68);
       }
-      h2 {
-        margin-top: 0;
-        font-size: 1.1rem;
-        text-wrap: balance;
-      }
-      .section { margin-top: 2.2rem; scroll-margin-top: 1.5rem; }
+      .step strong { color: #fff; }
+      .step p { margin: 0.45rem 0 0; color: var(--muted); }
 
       .screenshots {
+        margin-top: 1rem;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 0.85rem;
       }
       .shot {
         border: 1px solid var(--line);
-        border-radius: 14px;
+        border-radius: 16px;
         overflow: hidden;
-        background: #0f1530;
+        background: rgba(15, 21, 48, 0.86);
       }
       .shot .ph {
         aspect-ratio: 16 / 10;
-        background: linear-gradient(135deg, #1c2750, #0e1430);
+        background: linear-gradient(135deg, #26346b, #101838);
         display: grid;
         place-items: center;
-        color: #9cb0ff;
+        color: #b9c7ff;
         font-weight: 600;
       }
-      .shot p { margin: 0; padding: 0.8rem; }
+      .shot p { margin: 0; padding: 0.85rem; color: #c7d2fa; }
 
-      .waitlist { text-align: center; }
+      .waitlist {
+        margin-top: 2.2rem;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: linear-gradient(145deg, rgba(24, 34, 72, 0.8), rgba(14, 20, 42, 0.8));
+        padding: 1.25rem;
+      }
+      .waitlist p { margin: 0 0 0.9rem; color: var(--muted); }
       .waitlist form {
-        margin-top: 1rem;
         display: flex;
         gap: 0.6rem;
-        justify-content: center;
         flex-wrap: wrap;
       }
-      label { display: block; text-align: left; max-width: 420px; margin: 0 auto 0.4rem; font-size: 0.9rem; color: #cdd5f3; }
+      .input-wrap { flex: 1; min-width: 240px; }
+      label { display: block; margin: 0 0 0.35rem; font-size: 0.9rem; color: #d0dafd; }
       input[type="email"] {
-        min-width: 280px;
-        max-width: 420px;
         width: 100%;
-        border: 1px solid #3a4b87;
+        border: 1px solid #465a98;
         background: #0c1230;
         color: var(--text);
         padding: 0.75rem 0.9rem;
         border-radius: 12px;
       }
-      input[type="email"]::placeholder { color: #8ea0da; }
+      input[type="email"]::placeholder { color: #90a3dd; }
 
+      .faq {
+        margin-top: 2rem;
+      }
       details {
         border: 1px solid var(--line);
         border-radius: 12px;
-        padding: 0.8rem 1rem;
-        background: #0f1530;
+        padding: 0.85rem 1rem;
+        background: rgba(15, 21, 48, 0.72);
       }
-      details + details { margin-top: 0.7rem; }
+      details + details { margin-top: 0.65rem; }
       summary { cursor: pointer; font-weight: 600; }
+      details p { margin: 0.55rem 0 0; }
 
-      .final-cta { text-align: center; }
+      .cta {
+        margin-top: 2rem;
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1.1rem;
+        text-align: center;
+        background: rgba(13, 19, 40, 0.75);
+      }
+      .cta h2 { margin-bottom: 0.45rem; }
+      .cta p { margin: 0 0 0.9rem; color: var(--muted); }
 
       footer {
-        margin-top: 3rem;
-        color: #98a6d8;
-        font-size: 0.95rem;
+        margin-top: 2.7rem;
         text-align: center;
+        color: #94a4da;
+        font-size: 0.92rem;
+      }
+
+      @media (max-width: 740px) {
+        .hero { padding: 1.4rem; }
+        .nav { flex-direction: column; align-items: flex-start; }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -165,101 +322,140 @@ const description =
   </head>
   <body>
     <a href="#main-content" class="skip-link">Skip to Content</a>
+
     <main class="container" id="main-content">
+      <header class="nav">
+        <a class="brand" href="#top">
+          <span class="brand-dot" aria-hidden="true"></span>
+          Momentum
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#screenshots">Screenshots</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </header>
+
       <section class="hero section" id="top">
-        <p style="margin:0;opacity:.9;">Momentum for macOS</p>
-        <h1>Know where your project time actually goes.</h1>
+        <div class="badge">Built for Focused Makers</div>
+        <h1>Track Real Project Time, Then Ship with Clarity.</h1>
         <p class="lead">
-          Most makers don't have a time problem — they have a visibility problem. Momentum lets you log sessions in seconds,
-          organize work by project, and review your week with data you can trust. No spreadsheets. No admin overhead.
-          Just clear signal on what is moving your work forward.
+          Momentum gives you practical visibility on where your hours actually go. Log work in seconds,
+          organize by project, and turn weekly tracking into better decisions. No spreadsheet overhead. No friction tax.
         </p>
-        <div class="actions">
+        <div class="hero-actions">
           <a class="btn primary" href="#waitlist">Join Waitlist</a>
-          <a class="btn ghost" href="#how">See How It Works</a>
+          <a class="btn ghost" href="#how-it-works">See How It Works</a>
+        </div>
+        <div class="proof" aria-label="Highlights">
+          <span class="pill">Native macOS workflow</span>
+          <span class="pill">Raycast extension included</span>
+          <span class="pill">Project-first analytics</span>
+          <span class="pill">Built and used daily</span>
         </div>
       </section>
 
-      <section class="grid section" id="how">
-        <article class="card">
-          <h2>Capture in Seconds</h2>
-          <p>Start and stop sessions fast, so tracking supports flow instead of breaking it.</p>
-        </article>
-        <article class="card">
-          <h2>Organize by Project</h2>
-          <p>Group your time where it matters and spot what deserves more attention.</p>
-        </article>
-        <article class="card">
-          <h2>Log from Raycast</h2>
-          <p>Use the built-in Raycast extension to track instantly from anywhere on macOS.</p>
-        </article>
+      <section class="section" id="features">
+        <h2>Why Momentum Feels Different</h2>
+        <p class="section-intro">Most trackers optimize for admin teams. Momentum optimizes for builders who care about output.</p>
+        <div class="grid">
+          <article class="card">
+            <h3>Capture in Seconds</h3>
+            <p>Start and stop sessions instantly, so tracking supports deep work instead of interrupting it.</p>
+          </article>
+          <article class="card">
+            <h3>Organize by Project</h3>
+            <p>See effort by project and make smarter trade-offs based on real time spent, not guesses.</p>
+          </article>
+          <article class="card">
+            <h3>Raycast-Powered Logging</h3>
+            <p>Capture from anywhere on your Mac with one command and zero context switching.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="how-it-works">
+        <h2>How It Works</h2>
+        <p class="section-intro">A lightweight loop you can sustain every day.</p>
+        <div class="steps">
+          <article class="step">
+            <strong>1. Start a Session</strong>
+            <p>Pick a project and begin tracking in seconds.</p>
+          </article>
+          <article class="step">
+            <strong>2. Log with Context</strong>
+            <p>Attach sessions to real project work, not vague buckets.</p>
+          </article>
+          <article class="step">
+            <strong>3. Review and Decide</strong>
+            <p>Use weekly signals to adjust priorities and ship with confidence.</p>
+          </article>
+        </div>
       </section>
 
       <section class="section" id="screenshots">
         <h2>Screenshots</h2>
+        <p class="section-intro">Replace these placeholders with your real captures for launch.</p>
         <div class="screenshots">
           <article class="shot">
             <div class="ph">Dashboard screenshot</div>
-            <p>Quickly see project totals, trends, and where your focus is really going.</p>
+            <p>Get an instant view of project totals, trends, and where momentum is building.</p>
           </article>
           <article class="shot">
             <div class="ph">Session logging screenshot</div>
-            <p>Log focused work in seconds and keep momentum through your sprint blocks.</p>
+            <p>Track focused work with minimal friction and keep your sprint rhythm intact.</p>
           </article>
           <article class="shot">
             <div class="ph">Raycast extension screenshot</div>
-            <p>Track without context switching. One shortcut, one command, done.</p>
+            <p>Capture from anywhere on macOS with one shortcut and one command.</p>
           </article>
         </div>
       </section>
 
-      <section class="section card waitlist" id="waitlist">
+      <section class="waitlist section" id="waitlist">
         <h2>Get Early Access</h2>
-        <p>
-          Momentum is currently in the final polish phase. Join the waitlist to get launch updates,
-          early access, and first release notes.
-        </p>
+        <p>Momentum is in final polish. Join to get launch updates, early access, and release notes.</p>
         <form action="https://formspree.io/f/your-form-id" method="POST">
-          <label for="waitlist-email">Email</label>
-          <input
-            id="waitlist-email"
-            type="email"
-            name="email"
-            placeholder="name@company.com…"
-            autocomplete="email"
-            spellcheck="false"
-            required
-          />
+          <div class="input-wrap">
+            <label for="waitlist-email">Email</label>
+            <input
+              id="waitlist-email"
+              type="email"
+              name="email"
+              placeholder="name@company.com…"
+              autocomplete="email"
+              spellcheck="false"
+              required
+            />
+          </div>
           <button class="btn primary" type="submit">Join Waitlist</button>
         </form>
-        <p style="font-size:.9rem;margin-top:.8rem;">Tip: replace the Formspree endpoint with your own.</p>
       </section>
 
-      <section class="section" id="faq">
+      <section class="faq section" id="faq">
         <h2>FAQ</h2>
         <details>
           <summary>Who is Momentum for?</summary>
-          <p>Developers, designers, and makers doing project-based work who want clear time data with minimal friction.</p>
+          <p>Developers, designers, and makers doing project-based work who want clear time data without admin drag.</p>
         </details>
         <details>
           <summary>Do I need to track every minute?</summary>
-          <p>No. Momentum is built for practical clarity, not micromanagement. Track enough to make better decisions.</p>
+          <p>No. Track enough to make better decisions and keep your weekly planning grounded in reality.</p>
         </details>
         <details>
-          <summary>What’s the Main Difference vs Generic Trackers?</summary>
-          <p>Speed and focus. Momentum is optimized for maker workflows, with a native macOS flow and Raycast support.</p>
+          <summary>What’s Different vs Generic Time Trackers?</summary>
+          <p>Momentum is optimized for maker workflows: speed, project context, and a native macOS + Raycast flow.</p>
         </details>
       </section>
 
-      <section class="section card final-cta">
-        <h2>Track Less. Understand More. Ship Better.</h2>
-        <p>Turn weekly time logs into better prioritization and faster product progress.</p>
+      <section class="cta section">
+        <h2>Track Less Admin. Ship More Product.</h2>
+        <p>Turn work logs into sharper priorities and consistent progress every week.</p>
         <a class="btn primary" href="#waitlist">Join Waitlist</a>
       </section>
 
-      <footer>
-        Built by Miguel · Momentum
-      </footer>
+      <footer>Built by Miguel · Momentum</footer>
     </main>
   </body>
 </html>
