@@ -1,0 +1,32 @@
+---
+import type { FooterContent } from '../../types/landing';
+
+interface Props {
+  content: FooterContent;
+}
+
+const { content } = Astro.props;
+---
+
+<footer class="site-footer reveal">
+  <div class="footer-main">
+    <span class="footer-kicker">Portfolio project</span>
+    <div>
+      <h2>{content.title}</h2>
+      <p>{content.description}</p>
+    </div>
+  </div>
+
+  <nav class="footer-links" aria-label="Footer links">
+    {
+      content.links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))
+    }
+  </nav>
+
+  <div class="footer-meta">
+    <span>{content.copyright}</span>
+    <span>{content.signature}</span>
+  </div>
+</footer>

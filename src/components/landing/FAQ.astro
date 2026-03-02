@@ -1,0 +1,107 @@
+---
+import type { FAQItem } from '../../types/landing';
+
+interface Props {
+  id: string;
+  title: string;
+  subtitle: string;
+  items: FAQItem[];
+}
+
+const { id, title, subtitle, items } = Astro.props;
+---
+
+<section id={id} class="section reveal">
+  <div class="section-head">
+    <span class="section-eyebrow">FAQ</span>
+    <h2 class="section-title">{title}</h2>
+    <p class="section-subtitle">{subtitle}</p>
+  </div>
+
+  <div class="faq-list">
+    {
+      items.map((item, index) => (
+        <article class="faq-item" data-faq-item data-open="false">
+          <h3 class="faq-title">
+            <button
+              id={`${id}-faq-trigger-${index}`}
+              class="faq-trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls={`${id}-faq-answer-${index}`}
+              data-faq-trigger
+            >
+              <span class="faq-question">{item.question}</span>
+              <span class="faq-indicator" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div
+            id={`${id}-faq-answer-${index}`}
+            class="faq-answer"
+            role="region"
+            aria-labelledby={`${id}-faq-trigger-${index}`}
+            aria-hidden="true"
+            data-faq-panel
+          >
+            <p>{item.answer}</p>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
+
+<script is:inline>
+  const faqItems = document.querySelectorAll('[data-faq-item]');
+
+  faqItems.forEach((item) => {
+    const trigger = item.querySelector('[data-faq-trigger]');
+    const panel = item.querySelector('[data-faq-panel]');
+
+    if (!(trigger instanceof HTMLButtonElement) || !(panel instanceof HTMLElement)) {
+      return;
+    }
+
+    const setExpanded = (expanded) => {
+      item.dataset.open = expanded ? 'true' : 'false';
+      trigger.setAttribute('aria-expanded', String(expanded));
+      panel.setAttribute('aria-hidden', String(!expanded));
+    };
+
+    panel.style.maxHeight = '0px';
+    setExpanded(false);
+
+    trigger.addEventListener('click', () => {
+      const isOpen = item.dataset.open === 'true';
+
+      if (isOpen) {
+        if (panel.style.maxHeight === 'none') {
+          panel.style.maxHeight = `${panel.scrollHeight}px`;
+        }
+
+        requestAnimationFrame(() => {
+          setExpanded(false);
+          panel.style.maxHeight = '0px';
+        });
+        return;
+      }
+
+      setExpanded(true);
+      panel.style.maxHeight = '0px';
+
+      requestAnimationFrame(() => {
+        panel.style.maxHeight = `${panel.scrollHeight}px`;
+      });
+
+      const handleTransitionEnd = (event) => {
+        if (event.propertyName !== 'max-height') return;
+        if (item.dataset.open === 'true') {
+          panel.style.maxHeight = 'none';
+        }
+        panel.removeEventListener('transitionend', handleTransitionEnd);
+      };
+
+      panel.addEventListener('transitionend', handleTransitionEnd);
+    });
+  });
+</script>

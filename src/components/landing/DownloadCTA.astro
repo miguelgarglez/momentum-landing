@@ -1,0 +1,26 @@
+---
+import type { DownloadContent } from '../../types/landing';
+
+interface Props {
+  content: DownloadContent;
+  latestReleaseUrl: string;
+  releasesUrl: string;
+}
+
+const { content, latestReleaseUrl, releasesUrl } = Astro.props;
+---
+
+<section id={content.id} class="section reveal">
+  <div class="download-cta">
+    <span class="section-eyebrow">{content.eyebrow}</span>
+    <h2 class="section-title" style="font-size: clamp(1.7rem, 3.4vw, 2.8rem); margin-top: 0.9rem;">{content.title}</h2>
+    <p class="section-subtitle" style="margin-inline: 0; max-width: 70ch;">{content.description}</p>
+
+    <div class="download-actions">
+      <a class="btn primary" href={latestReleaseUrl} target="_blank" rel="noreferrer">{content.primaryLabel}</a>
+      <a class="btn secondary" href={releasesUrl} target="_blank" rel="noreferrer">{content.secondaryLabel}</a>
+    </div>
+
+    <p class="download-helper">{content.helper}</p>
+  </div>
+</section>

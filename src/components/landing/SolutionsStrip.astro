@@ -1,0 +1,29 @@
+---
+import type { SolutionsContent } from '../../types/landing';
+
+interface Props {
+  content: SolutionsContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section id={content.id} class="section reveal">
+  <div class="section-head">
+    <span class="section-eyebrow">{content.eyebrow}</span>
+    <h2 class="section-title">{content.title}</h2>
+    <p class="section-subtitle">{content.subtitle}</p>
+  </div>
+
+  <div class="solutions-grid">
+    {
+      content.pillars.map((pillar) => (
+        <article class="solution-card">
+          <span class="solution-icon" aria-hidden="true">{pillar.icon}</span>
+          <h3>{pillar.title}</h3>
+          <p>{pillar.description}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

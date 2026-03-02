@@ -1,0 +1,65 @@
+---
+import type { ScreensPreviewContent } from '../../types/landing';
+
+interface Props {
+  content: ScreensPreviewContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section id={content.id} class="section reveal screens-section">
+  <div class="section-head">
+    <span class="section-eyebrow">{content.eyebrow}</span>
+    <h2 class="section-title">{content.title}</h2>
+    <p class="section-subtitle">{content.subtitle}</p>
+  </div>
+
+  <div class="screens-grid">
+    {
+      content.items.slice(0, 4).map((item, index) => {
+        const darkImage = item.image.dark;
+        const lightImage = item.image.light ?? darkImage;
+
+        return (
+          <article
+            class={`screen-card-live ${item.aspect === 'portrait' ? 'portrait' : 'landscape'}`}
+            data-tone={item.tone}
+            style={`--screen-index:${index}; --screen-depth:${item.depth ?? 10};`}
+          >
+            <div class="screen-media">
+              <div class="screen-frame">
+                <picture class="theme-shot theme-shot-dark">
+                  <source srcset={darkImage.webp} type="image/webp" />
+                  <img
+                    src={darkImage.png}
+                    alt={item.image.alt}
+                    loading="lazy"
+                    decoding="async"
+                    width={item.image.width}
+                    height={item.image.height}
+                  />
+                </picture>
+                <picture class="theme-shot theme-shot-light">
+                  <source srcset={lightImage.webp} type="image/webp" />
+                  <img
+                    src={lightImage.png}
+                    alt={item.image.alt}
+                    loading="lazy"
+                    decoding="async"
+                    width={item.image.width}
+                    height={item.image.height}
+                  />
+                </picture>
+              </div>
+            </div>
+            <div class="screen-copy">
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </article>
+        );
+      })
+    }
+  </div>
+</section>

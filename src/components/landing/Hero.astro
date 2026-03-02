@@ -1,0 +1,76 @@
+---
+import type { HeroContent } from '../../types/landing';
+import type { ScreenPreviewItem } from '../../types/landing';
+
+interface Props {
+  content: HeroContent;
+  featuredScreen: ScreenPreviewItem;
+}
+
+const { content, featuredScreen } = Astro.props;
+const darkImage = featuredScreen.image.dark;
+const lightImage = featuredScreen.image.light ?? darkImage;
+---
+
+<section id={content.id} class="hero reveal">
+  <div class="hero-simple">
+    <div class="hero-simple-copy">
+      <span class="hero-badge">{content.badge.label}</span>
+      <h1 class="hero-title">
+        {content.title}
+        <span class="hero-title-muted">{content.highlight}</span>
+      </h1>
+      <p class="hero-description">{content.description}</p>
+
+      <div class="hero-actions">
+        {
+          content.actions.map((action) => {
+            const actionIsExternal = action.href.startsWith('http');
+            return (
+              <a
+                class={`btn ${action.variant === 'primary' ? 'primary' : 'secondary'}`}
+                href={action.href}
+                target={actionIsExternal ? '_blank' : undefined}
+                rel={actionIsExternal ? 'noreferrer' : undefined}
+              >
+                {action.label}
+              </a>
+            );
+          })
+        }
+      </div>
+
+      <div class="hero-proof" aria-label="Momentum highlights">
+        {content.proofPoints.map((point) => <span>{point}</span>)}
+      </div>
+    </div>
+
+    <div class="hero-simple-media" aria-hidden="true">
+      <span class="hero-shot-glow"></span>
+      <article class="hero-simple-shot">
+        <picture class="theme-shot theme-shot-dark">
+          <source srcset={darkImage.webp} type="image/webp" />
+          <img
+            src={darkImage.png}
+            alt={featuredScreen.image.alt}
+            width={featuredScreen.image.width}
+            height={featuredScreen.image.height}
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
+        <picture class="theme-shot theme-shot-light">
+          <source srcset={lightImage.webp} type="image/webp" />
+          <img
+            src={lightImage.png}
+            alt={featuredScreen.image.alt}
+            width={featuredScreen.image.width}
+            height={featuredScreen.image.height}
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
+      </article>
+    </div>
+  </div>
+</section>

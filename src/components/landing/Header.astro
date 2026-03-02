@@ -1,0 +1,47 @@
+---
+import type { ButtonLink, NavItem } from '../../types/landing';
+
+interface Props {
+  brand: string;
+  navItems: NavItem[];
+  cta: ButtonLink;
+}
+
+const { brand, navItems, cta } = Astro.props;
+const ctaIsExternal = cta.href.startsWith('http');
+---
+
+<header class="site-header reveal">
+  <div class="site-header-inner">
+    <a class="brand" href="#top" aria-label={`${brand} home`}>
+      <span class="brand-logo" aria-hidden="true">
+        <img class="brand-logo-light" src="/images/momentum/momentum-appicon-light.png" alt="" width="1024" height="1024" />
+        <img class="brand-logo-dark" src="/images/momentum/momentum-appicon-dark.png" alt="" width="1024" height="1024" />
+      </span>
+      {brand}
+    </a>
+
+    <nav class="header-nav" aria-label="Primary navigation">
+      {
+        navItems.map((item) => (
+          <a href={item.href}>{item.label}</a>
+        ))
+      }
+    </nav>
+
+    <div class="header-actions">
+      <a
+        class={`btn ${cta.variant === 'primary' ? 'primary' : 'secondary'}`}
+        href={cta.href}
+        target={ctaIsExternal ? '_blank' : undefined}
+        rel={ctaIsExternal ? 'noreferrer' : undefined}
+      >
+        {cta.label}
+      </a>
+
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">
+        <span class="theme-toggle-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</header>

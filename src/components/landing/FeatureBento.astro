@@ -1,0 +1,32 @@
+---
+import type { BentoContent } from '../../types/landing';
+
+interface Props {
+  content: BentoContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section id={content.id} class="section reveal">
+  <div class="section-head">
+    <span class="section-eyebrow">{content.eyebrow}</span>
+    <h2 class="section-title">{content.title}</h2>
+    <p class="section-subtitle">{content.subtitle}</p>
+  </div>
+
+  <div class="bento-grid">
+    {
+      content.cards.map((card) => (
+        <article class="bento-card" data-tone={card.tone}>
+          <div>
+            <span class="bento-tag">{card.tag}</span>
+            <h3>{card.title}</h3>
+            <p>{card.description}</p>
+          </div>
+          <div class="bento-mock" aria-hidden="true"></div>
+        </article>
+      ))
+    }
+  </div>
+</section>

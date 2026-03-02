@@ -1,0 +1,45 @@
+---
+import type { WorkflowContent } from '../../types/landing';
+
+interface Props {
+  content: WorkflowContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section id={content.id} class="section reveal">
+  <div class="section-head">
+    <span class="section-eyebrow">{content.eyebrow}</span>
+    <h2 class="section-title">{content.title}</h2>
+    <p class="section-subtitle">{content.subtitle}</p>
+  </div>
+
+  <div class="workflow-shell">
+    <div class="workflow-steps">
+      {
+        content.steps.map((step, index) => (
+          <article class="workflow-step">
+            <strong>{index + 1}. {step.title}</strong>
+            <p>{step.description}</p>
+          </article>
+        ))
+      }
+    </div>
+
+    <div class="workflow-preview" aria-hidden="true">
+      <div class="workflow-preview-row">
+        <div class="mock-line" style="width: 56%;"></div>
+        <div class="mock-line" style="width: 84%;"></div>
+      </div>
+      <div class="workflow-preview-row">
+        <div class="mock-line" style="width: 48%;"></div>
+        <div class="mock-line" style="width: 76%;"></div>
+      </div>
+      <div class="workflow-preview-row">
+        <div class="mock-line" style="width: 62%;"></div>
+        <div class="mock-line" style="width: 90%;"></div>
+      </div>
+    </div>
+  </div>
+</section>

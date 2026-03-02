@@ -1,0 +1,71 @@
+:root {
+  --font-body: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+  --font-display: 'Space Grotesk', 'Avenir Next', 'Helvetica Neue', sans-serif;
+  color-scheme: light;
+
+  --color-page: #eef0f4;
+  --color-page-edge: #d8dce3;
+  --color-surface: #ffffff;
+  --color-surface-soft: #f6f8fc;
+  --color-surface-raised: #fdfefe;
+  --color-text: #111827;
+  --color-muted: #5b6475;
+  --color-line: #d5dae4;
+  --color-line-strong: #bec7d8;
+  --color-accent: #17a9ff;
+  --color-accent-strong: #0a8cdd;
+  --color-warm: #f1a91f;
+  --color-chip: #f0f4fb;
+
+  --radius-xs: 10px;
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 10px 30px rgba(17, 24, 39, 0.06);
+  --shadow-mid: 0 20px 45px rgba(17, 24, 39, 0.08);
+  --shadow-float: 0 18px 28px rgba(15, 23, 42, 0.12);
+  --bg-gradient-start: #f8fafc;
+  --bg-gradient-mid: #f1f5f9;
+  --bg-gradient-end: #eef2f7;
+
+  --space-1: 0.4rem;
+  --space-2: 0.75rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-7: 4.5rem;
+
+  --container: 1180px;
+  --focus-ring: 0 0 0 3px rgba(23, 169, 255, 0.25);
+
+  --anim-fast: 180ms;
+  --anim-mid: 340ms;
+  --anim-slow: 620ms;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --color-page: #0b1220;
+  --color-page-edge: #1a2436;
+  --color-surface: #0f172a;
+  --color-surface-soft: #111e32;
+  --color-surface-raised: #1a2740;
+  --color-text: #e5edf9;
+  --color-muted: #9aa8bf;
+  --color-line: #2a3a55;
+  --color-line-strong: #3b4f70;
+  --color-accent: #3db4ff;
+  --color-accent-strong: #6ac6ff;
+  --color-chip: #182438;
+
+  --shadow-soft: 0 12px 28px rgba(2, 8, 20, 0.45);
+  --shadow-mid: 0 20px 48px rgba(2, 8, 20, 0.55);
+  --shadow-float: 0 20px 32px rgba(2, 6, 23, 0.6);
+  --bg-gradient-start: #060c17;
+  --bg-gradient-mid: #0b1424;
+  --bg-gradient-end: #0f1a2e;
+}
