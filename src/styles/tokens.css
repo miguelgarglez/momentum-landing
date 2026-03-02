@@ -12,8 +12,13 @@
   --color-muted: #5b6475;
   --color-line: #d5dae4;
   --color-line-strong: #bec7d8;
-  --color-accent: #17a9ff;
-  --color-accent-strong: #0a8cdd;
+  --color-accent-from: #4d8bff;
+  --color-accent: #5d6dff;
+  --color-accent-to: #b95ee7;
+  --color-accent-from-strong: #3f7cf3;
+  --color-accent-strong: #505eea;
+  --color-accent-to-strong: #a750d3;
+  --color-accent-border: #6d72de;
   --color-warm: #f1a91f;
   --color-chip: #f0f4fb;
 
@@ -39,7 +44,7 @@
   --space-7: 4.5rem;
 
   --container: 1180px;
-  --focus-ring: 0 0 0 3px rgba(23, 169, 255, 0.25);
+  --focus-ring: 0 0 0 3px rgba(97, 110, 255, 0.34);
 
   --anim-fast: 180ms;
   --anim-mid: 340ms;
@@ -58,8 +63,13 @@
   --color-muted: #9aa8bf;
   --color-line: #2a3a55;
   --color-line-strong: #3b4f70;
-  --color-accent: #3db4ff;
-  --color-accent-strong: #6ac6ff;
+  --color-accent-from: #5b98ff;
+  --color-accent: #706eff;
+  --color-accent-to: #c86ef2;
+  --color-accent-from-strong: #6aa6ff;
+  --color-accent-strong: #7f7bff;
+  --color-accent-to-strong: #d47bf5;
+  --color-accent-border: #8582ff;
   --color-chip: #182438;
 
   --shadow-soft: 0 12px 28px rgba(2, 8, 20, 0.45);

@@ -1,47 +1,257 @@
 ---
-import type { ButtonLink, NavItem } from '../../types/landing';
+import type { ButtonLink, NavItem } from "../../types/landing";
 
 interface Props {
-  brand: string;
-  navItems: NavItem[];
-  cta: ButtonLink;
+    brand: string;
+    navItems: NavItem[];
+    cta: ButtonLink;
 }
 
 const { brand, navItems, cta } = Astro.props;
-const ctaIsExternal = cta.href.startsWith('http');
+const ctaIsExternal = cta.href.startsWith("http");
 ---
 
-<header class="site-header reveal">
-  <div class="site-header-inner">
-    <a class="brand" href="#top" aria-label={`${brand} home`}>
-      <span class="brand-logo" aria-hidden="true">
-        <img class="brand-logo-light" src="/images/momentum/momentum-appicon-light.png" alt="" width="1024" height="1024" />
-        <img class="brand-logo-dark" src="/images/momentum/momentum-appicon-dark.png" alt="" width="1024" height="1024" />
-      </span>
-      {brand}
-    </a>
+<header class="site-header reveal" data-header-root data-menu-open="false">
+    <div class="site-header-inner">
+        <a class="brand" href="#top" aria-label={`${brand} home`}>
+            <span class="brand-logo" aria-hidden="true">
+                <img
+                    class="brand-logo-light"
+                    src="/images/momentum/momentum-appicon-light.png"
+                    alt=""
+                    width="1024"
+                    height="1024"
+                />
+                <img
+                    class="brand-logo-dark"
+                    src="/images/momentum/momentum-appicon-dark.png"
+                    alt=""
+                    width="1024"
+                    height="1024"
+                />
+            </span>
+            {brand}
+        </a>
 
-    <nav class="header-nav" aria-label="Primary navigation">
-      {
-        navItems.map((item) => (
-          <a href={item.href}>{item.label}</a>
-        ))
-      }
-    </nav>
+        <nav class="header-nav" aria-label="Primary navigation">
+            {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+        </nav>
 
-    <div class="header-actions">
-      <a
-        class={`btn ${cta.variant === 'primary' ? 'primary' : 'secondary'}`}
-        href={cta.href}
-        target={ctaIsExternal ? '_blank' : undefined}
-        rel={ctaIsExternal ? 'noreferrer' : undefined}
-      >
-        {cta.label}
-      </a>
+        <div class="header-actions">
+            <a
+                class={`btn header-cta-desktop ${cta.variant === "primary" ? "primary" : "secondary"}`}
+                href={cta.href}
+                target={ctaIsExternal ? "_blank" : undefined}
+                rel={ctaIsExternal ? "noreferrer" : undefined}
+            >
+                {cta.label}
+            </a>
 
-      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false">
-        <span class="theme-toggle-icon" aria-hidden="true"></span>
-      </button>
+            <button
+                class="theme-toggle"
+                type="button"
+                data-theme-toggle
+                aria-label="Switch to dark mode"
+                aria-pressed="false"
+            >
+                <span class="theme-toggle-icon" aria-hidden="true">
+                    <svg
+                        class="theme-icon theme-icon-sun"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                    >
+                        <circle cx="12" cy="12" r="4.2"></circle>
+                        <line
+                            x1="12"
+                            y1="2.5"
+                            x2="12"
+                            y2="5.2"
+                            stroke-linecap="round"></line>
+                        <line
+                            x1="12"
+                            y1="18.8"
+                            x2="12"
+                            y2="21.5"
+                            stroke-linecap="round"></line>
+                        <line
+                            x1="2.5"
+                            y1="12"
+                            x2="5.2"
+                            y2="12"
+                            stroke-linecap="round"></line>
+                        <line
+                            x1="18.8"
+                            y1="12"
+                            x2="21.5"
+                            y2="12"
+                            stroke-linecap="round"></line>
+                        <line
+                            x1="5.3"
+                            y1="5.3"
+                            x2="7.2"
+                            y2="7.2"
+                            stroke-linecap="round"></line>
+                        <line
+                            x1="16.8"
+                            y1="16.8"
+                            x2="18.7"
+                            y2="18.7"
+                            stroke-linecap="round"></line>
+                        <line
+                            x1="16.8"
+                            y1="7.2"
+                            x2="18.7"
+                            y2="5.3"
+                            stroke-linecap="round"></line>
+                        <line
+                            x1="5.3"
+                            y1="18.7"
+                            x2="7.2"
+                            y2="16.8"
+                            stroke-linecap="round"></line>
+                    </svg>
+                    <svg
+                        class="theme-icon theme-icon-moon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                    >
+                        <path
+                            d="M20 13.2A8.8 8.8 0 1 1 10.8 4a7.3 7.3 0 0 0 9.2 9.2Z"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"></path>
+                    </svg>
+                </span>
+            </button>
+        </div>
+
+        <button
+            class="header-menu-toggle"
+            type="button"
+            data-header-menu-toggle
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="header-mobile-panel"
+        >
+            <span class="header-menu-icon" aria-hidden="true">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </button>
     </div>
-  </div>
+
+    <div
+        id="header-mobile-panel"
+        class="header-mobile-panel"
+        data-header-mobile-panel
+        hidden
+    >
+        <nav class="header-mobile-nav" aria-label="Primary navigation mobile">
+            {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+        </nav>
+        <a
+            class={`btn header-cta-mobile ${cta.variant === "primary" ? "primary" : "secondary"}`}
+            href={cta.href}
+            target={ctaIsExternal ? "_blank" : undefined}
+            rel={ctaIsExternal ? "noreferrer" : undefined}
+        >
+            {cta.label}
+        </a>
+    </div>
 </header>
+
+<script is:inline>
+    (() => {
+        const MOBILE_BREAKPOINT = "(max-width: 800px)";
+        const header = document.querySelector("[data-header-root]");
+        if (!header) {
+            return;
+        }
+
+        const menuToggleButton = header.querySelector(
+            "[data-header-menu-toggle]",
+        );
+        const mobilePanel = header.querySelector("[data-header-mobile-panel]");
+        const mobileNavLinks = Array.from(
+            header.querySelectorAll(".header-mobile-nav a"),
+        );
+        const mediaQuery = window.matchMedia(MOBILE_BREAKPOINT);
+
+        if (
+            !(menuToggleButton instanceof HTMLButtonElement) ||
+            !(mobilePanel instanceof HTMLElement)
+        ) {
+            return;
+        }
+
+        header.dataset.menuReady = "true";
+        let closePanelTimer;
+
+        const setMenuOpen = (isOpen) => {
+            menuToggleButton.setAttribute("aria-expanded", String(isOpen));
+            menuToggleButton.setAttribute(
+                "aria-label",
+                isOpen ? "Close navigation menu" : "Open navigation menu",
+            );
+
+            if (isOpen) {
+                if (closePanelTimer) {
+                    window.clearTimeout(closePanelTimer);
+                }
+                mobilePanel.removeAttribute("hidden");
+                header.dataset.menuOpen = "false";
+                window.requestAnimationFrame(() => {
+                    header.dataset.menuOpen = "true";
+                });
+                return;
+            }
+
+            header.dataset.menuOpen = "false";
+            closePanelTimer = window.setTimeout(() => {
+                if (header.dataset.menuOpen === "false") {
+                    mobilePanel.setAttribute("hidden", "");
+                }
+            }, 220);
+        };
+
+        const closeMenu = () => setMenuOpen(false);
+        const toggleMenu = () => {
+            const isOpen = header.dataset.menuOpen === "true";
+            setMenuOpen(!isOpen);
+        };
+
+        menuToggleButton.addEventListener("click", toggleMenu);
+
+        mobileNavLinks.forEach((link) => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key !== "Escape") {
+                return;
+            }
+
+            closeMenu();
+        });
+
+        document.addEventListener("click", (event) => {
+            if (!(event.target instanceof Node)) {
+                return;
+            }
+
+            if (!header.contains(event.target)) {
+                closeMenu();
+            }
+        });
+
+        mediaQuery.addEventListener("change", (event) => {
+            if (!event.matches) {
+                closeMenu();
+            }
+        });
+    })();
+</script>
