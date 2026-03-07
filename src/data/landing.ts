@@ -17,6 +17,7 @@ export const landingContent: LandingContent = {
       { label: "Product", href: "#solutions" },
       { label: "Screens", href: "#screens" },
       { label: "Download", href: "#download" },
+      { label: "Changelog", href: "/changelog" },
       { label: "FAQ", href: "#faq" },
     ],
     cta: {
@@ -307,6 +308,7 @@ export const landingContent: LandingContent = {
       { label: "Product", href: "#solutions" },
       { label: "Screens", href: "#screens" },
       { label: "Download", href: "#download" },
+      { label: "Changelog", href: "/changelog" },
       { label: "GitHub", href: "https://github.com/miguelgarglez/momentum" },
     ],
     signature: "Built by miguelgarglez",

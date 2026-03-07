@@ -1510,6 +1510,11 @@ a {
         z-index: 45;
     }
 
+    .hero-badge,
+    .hero-proof {
+        display: none;
+    }
+
     .brand {
         gap: 0.5rem;
         font-size: 1.08rem;

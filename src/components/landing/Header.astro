@@ -3,17 +3,18 @@ import type { ButtonLink, NavItem } from "../../types/landing";
 
 interface Props {
     brand: string;
+    brandHref?: string;
     navItems: NavItem[];
     cta: ButtonLink;
 }
 
-const { brand, navItems, cta } = Astro.props;
+const { brand, brandHref = "#top", navItems, cta } = Astro.props;
 const ctaIsExternal = cta.href.startsWith("http");
 ---
 
 <header class="site-header reveal" data-header-root data-menu-open="false">
     <div class="site-header-inner">
-        <a class="brand" href="#top" aria-label={`${brand} home`}>
+        <a class="brand" href={brandHref} aria-label={`${brand} home`}>
             <span class="brand-logo" aria-hidden="true">
                 <img
                     class="brand-logo-light"

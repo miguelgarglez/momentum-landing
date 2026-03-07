@@ -1,0 +1,183 @@
+{
+  "generatedAt": "2026-03-07T11:46:42+00:00",
+  "repository": "miguelgarglez/momentum",
+  "releases": [
+    {
+      "version": "1.8.2",
+      "publishedAt": "2026-02-28",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.8.1...v1.8.2",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.8.2",
+      "highlights": [],
+      "fixes": [],
+      "hidden": true
+    },
+    {
+      "version": "1.8.1",
+      "publishedAt": "2026-02-28",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.8.0...v1.8.1",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.8.1",
+      "highlights": [],
+      "fixes": [],
+      "hidden": true
+    },
+    {
+      "version": "1.8.0",
+      "publishedAt": "2026-02-28",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.7.0...v1.8.0",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.8.0",
+      "highlights": [
+        "Customize projects with icons and emoji for faster visual scanning.",
+        "Momentum is now available in English and Spanish across the app.",
+        "Use Momentum from Raycast with faster project actions and more reliable manual tracking controls.",
+        "Manual tracking flows are easier to start, stop, and manage from Momentum."
+      ],
+      "fixes": [
+        "Menu bar controls are more reliable and do a better job surfacing active tracking state.",
+        "Project action panels and overlays behave more consistently throughout the app.",
+        "Tracking and conflict resolution flows feel more consistent during everyday use."
+      ],
+      "hidden": false
+    },
+    {
+      "version": "1.7.0",
+      "publishedAt": "2026-02-01",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.6.0...v1.7.0",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.7.0",
+      "highlights": [
+        "The first-launch experience is smoother with a more polished welcome flow.",
+        "Menu bar controls now reflect manual tracking status more clearly.",
+        "Conflict resolution visuals are easier to scan during review."
+      ],
+      "fixes": [
+        "Tracking is more reliable thanks to improved timer guardrails and conflict handling.",
+        "Momentum uses less CPU during long-running sessions.",
+        "Small UI issues in onboarding and the menu bar were resolved."
+      ],
+      "hidden": false
+    },
+    {
+      "version": "1.6.0",
+      "publishedAt": "2026-01-11",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.5.0...v1.6.0",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.6.0",
+      "highlights": [
+        "Project domain management is more flexible and easier to maintain."
+      ],
+      "fixes": [],
+      "hidden": false
+    },
+    {
+      "version": "1.5.0",
+      "publishedAt": "2026-01-11",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.4.2...v1.5.0",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.5.0",
+      "highlights": [
+        "Settings are easier to navigate with a clearer split-view layout and improved section flows."
+      ],
+      "fixes": [
+        "Settings navigation, sizing, and accessibility issues were resolved for a smoother setup flow."
+      ],
+      "hidden": false
+    },
+    {
+      "version": "1.4.2",
+      "publishedAt": "2026-01-10",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.4.1...v1.4.2",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.4.2",
+      "highlights": [],
+      "fixes": [
+        "Fixed isolate status item controller to main actor."
+      ],
+      "hidden": true
+    },
+    {
+      "version": "1.4.1",
+      "publishedAt": "2026-01-10",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.4.0...v1.4.1",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.4.1",
+      "highlights": [],
+      "fixes": [],
+      "hidden": true
+    },
+    {
+      "version": "1.4.0",
+      "publishedAt": "2026-01-10",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.3.0...v1.4.0",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.4.0",
+      "highlights": [
+        "Projects can now use custom colors for quicker recognition across the app.",
+        "Project detail screens now surface clearer summaries and easier navigation through tracked work."
+      ],
+      "fixes": [
+        "Project color selection is more stable and closes cleanly after each edit."
+      ],
+      "hidden": false
+    },
+    {
+      "version": "1.3.0",
+      "publishedAt": "2026-01-10",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.2.1...v1.3.0",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.3.0",
+      "highlights": [
+        "Momentum can now track supported files alongside app and browser activity."
+      ],
+      "fixes": [],
+      "hidden": false
+    },
+    {
+      "version": "1.2.1",
+      "publishedAt": "2026-01-08",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.2.0...v1.2.1",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.2.1",
+      "highlights": [],
+      "fixes": [],
+      "hidden": true
+    },
+    {
+      "version": "1.2.0",
+      "publishedAt": "2026-01-08",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.1.0...v1.2.0",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.2.0",
+      "highlights": [
+        "The first-launch experience is smoother with a more polished welcome flow."
+      ],
+      "fixes": [],
+      "hidden": false
+    },
+    {
+      "version": "1.1.0",
+      "publishedAt": "2026-01-08",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.0.2...v1.1.0",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.1.0",
+      "highlights": [
+        "Momentum now surfaces streak progress more clearly inside project summaries.",
+        "Manual tracking flows are easier to start, stop, and manage from Momentum."
+      ],
+      "fixes": [],
+      "hidden": false
+    },
+    {
+      "version": "1.0.2",
+      "publishedAt": "2026-01-08",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.0.1...v1.0.2",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.0.2",
+      "highlights": [],
+      "fixes": [],
+      "hidden": true
+    },
+    {
+      "version": "1.0.1",
+      "publishedAt": "2026-01-06",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.0.0...v1.0.1",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.0.1",
+      "highlights": [
+        "Momentum launched with richer context tracking, project summaries, and cleaner project management workflows.",
+        "Settings and project configuration became more practical for day-to-day use."
+      ],
+      "fixes": [
+        "The menu bar tracker now initializes more reliably after launch."
+      ],
+      "hidden": false
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+---
+import Footer from "../components/landing/Footer.astro";
+import Header from "../components/landing/Header.astro";
+import {
+    generatedChangelog,
+    visibleChangelogReleases,
+} from "../data/changelog";
+import { landingContent } from "../data/landing";
+import LandingLayout from "../layouts/LandingLayout.astro";
+
+const toRootHref = (href: string) => (href.startsWith("#") ? `/${href}` : href);
+const headerNavItems = landingContent.header.navItems.map((item) => ({
+    ...item,
+    href: toRootHref(item.href),
+}));
+const footerLinks = landingContent.footer.links.map((item) => ({
+    ...item,
+    href: toRootHref(item.href),
+}));
+const releaseCount = visibleChangelogReleases.length;
+const lastUpdated = new Date(generatedChangelog.generatedAt).toLocaleDateString(
+    "en-US",
+    {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+    },
+);
+const pageDescription =
+    "Product-focused release notes for Momentum, with highlights and fixes pulled from each shipped macOS release.";
+---
+
+<LandingLayout title="Momentum Changelog" description={pageDescription}>
+    <Header
+        brand={landingContent.header.brand}
+        brandHref="/"
+        navItems={headerNavItems}
+        cta={landingContent.header.cta}
+    />
+
+    <section class="section changelog-hero" id="top">
+        <div class="section-head changelog-hero-copy">
+            <span class="section-eyebrow">Release notes</span>
+            <h1 class="section-title">Momentum changelog</h1>
+            <p class="changelog-hero-meta">
+                {releaseCount} releases
+                <span aria-hidden="true">•</span>
+                Updated {lastUpdated}
+            </p>
+        </div>
+    </section>
+
+    <section class="section changelog-section">
+        <div class="changelog-list">
+            {
+                visibleChangelogReleases.map((release) => (
+                    <article class="surface-panel changelog-card">
+                        <div class="changelog-card-header">
+                            <div>
+                                <p class="changelog-card-kicker">
+                                    Version {release.version}
+                                </p>
+                                <h3>
+                                    <a
+                                        href={release.compareUrl}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        Momentum {release.version}
+                                    </a>
+                                </h3>
+                            </div>
+                            <div class="changelog-card-meta">
+                                <time datetime={release.publishedAt}>
+                                    {release.publishedAt}
+                                </time>
+                                <a
+                                    class="changelog-download"
+                                    href={release.downloadUrl}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                >
+                                    Open release
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="changelog-card-body">
+                            {release.highlights.length > 0 && (
+                                <section>
+                                    <h4>Highlights</h4>
+                                    <ul>
+                                        {release.highlights.map((item) => (
+                                            <li>{item}</li>
+                                        ))}
+                                    </ul>
+                                </section>
+                            )}
+
+                            {release.fixes.length > 0 && (
+                                <section>
+                                    <h4>Fixes</h4>
+                                    <ul>
+                                        {release.fixes.map((item) => (
+                                            <li>{item}</li>
+                                        ))}
+                                    </ul>
+                                </section>
+                            )}
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+    </section>
+
+    <Footer
+        content={{
+            ...landingContent.footer,
+            description:
+                "Momentum ships in public, and this changelog keeps the visible product history easy to scan.",
+            links: footerLinks,
+        }}
+    />
+</LandingLayout>
+
+<style>
+    .changelog-hero {
+        margin-top: var(--space-6);
+    }
+
+    .changelog-hero-copy {
+        max-width: 760px;
+    }
+
+    .changelog-hero-meta {
+        margin: 0.9rem 0 0;
+        color: var(--color-muted);
+        font-size: 0.94rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+    }
+
+    .changelog-list {
+        display: grid;
+        gap: 1rem;
+    }
+
+    .changelog-section {
+        margin-top: var(--space-4);
+    }
+
+    .changelog-card {
+        padding: clamp(1.2rem, 2.3vw, 1.6rem);
+        background:
+            linear-gradient(
+                180deg,
+                rgba(255, 255, 255, 0.92),
+                rgba(246, 249, 255, 0.92)
+            ),
+            var(--color-surface);
+    }
+
+    .changelog-card-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: flex-start;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--color-line);
+    }
+
+    .changelog-card-kicker {
+        margin: 0 0 0.35rem;
+        color: var(--color-muted);
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+    }
+
+    .changelog-card-header h3 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: clamp(1.3rem, 3vw, 1.65rem);
+        letter-spacing: -0.03em;
+    }
+
+    .changelog-card-header h3 a {
+        text-decoration: none;
+    }
+
+    .changelog-card-meta {
+        display: grid;
+        justify-items: end;
+        gap: 0.55rem;
+        color: var(--color-muted);
+        font-size: 0.95rem;
+    }
+
+    .changelog-download {
+        text-decoration: none;
+        color: var(--color-accent-strong);
+        font-weight: 600;
+    }
+
+    .changelog-card-body {
+        display: grid;
+        gap: 1rem;
+        padding-top: 1rem;
+    }
+
+    .changelog-card-body section {
+        display: grid;
+        gap: 0.55rem;
+    }
+
+    .changelog-card-body h4 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: 1rem;
+        letter-spacing: -0.02em;
+    }
+
+    .changelog-card-body ul {
+        margin: 0;
+        padding-left: 1.15rem;
+        display: grid;
+        gap: 0.55rem;
+        color: var(--color-muted);
+    }
+
+    .changelog-card-body li {
+        line-height: 1.6;
+    }
+
+    :root[data-theme="dark"] .changelog-card {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(12, 22, 38, 0.88),
+                rgba(9, 17, 31, 0.92)
+            ),
+            var(--color-surface);
+    }
+
+    @media (max-width: 900px) {
+        .changelog-card-header {
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .changelog-card-meta {
+            justify-items: start;
+        }
+    }
+</style>
