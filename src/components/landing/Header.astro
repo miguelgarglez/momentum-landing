@@ -8,7 +8,7 @@ interface Props {
     cta: ButtonLink;
 }
 
-const { brand, brandHref = "#top", navItems, cta } = Astro.props;
+const { brand, brandHref = "", navItems, cta } = Astro.props;
 const ctaIsExternal = cta.href.startsWith("http");
 ---
 
