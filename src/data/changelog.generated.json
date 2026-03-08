@@ -1,7 +1,16 @@
 {
-  "generatedAt": "2026-03-07T12:37:35+00:00",
+  "generatedAt": "2026-03-08T13:59:01+00:00",
   "repository": "miguelgarglez/momentum",
   "releases": [
+    {
+      "version": "1.9.1",
+      "publishedAt": "2026-03-08",
+      "compareUrl": "https://github.com/miguelgarglez/momentum/compare/v1.9.0...v1.9.1",
+      "downloadUrl": "https://github.com/miguelgarglez/momentum/releases/tag/v1.9.1",
+      "highlights": [],
+      "fixes": [],
+      "hidden": true
+    },
     {
       "version": "1.9.0",
       "publishedAt": "2026-03-07",
