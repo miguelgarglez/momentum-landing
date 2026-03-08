@@ -318,7 +318,7 @@ export const landingContent: LandingContent = {
     ],
     signature: {
       label: "Built by Miguel García",
-      href: "https://miguel.garglez.github.io",
+      href: "https://miguelgarglez.github.io",
     },
     copyright: "© 2026 Momentum",
   },
