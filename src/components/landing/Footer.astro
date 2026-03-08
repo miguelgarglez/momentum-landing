@@ -27,6 +27,8 @@ const { content } = Astro.props;
 
   <div class="footer-meta">
     <span>{content.copyright}</span>
-    <span>{content.signature}</span>
+    <a href={content.signature.href} target="_blank" rel="noreferrer">
+      {content.signature.label}
+    </a>
   </div>
 </footer>

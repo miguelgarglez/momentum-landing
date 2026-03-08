@@ -126,7 +126,7 @@ export interface FooterContent {
   title: string;
   description: string;
   links: FooterLink[];
-  signature: string;
+  signature: FooterLink;
   copyright: string;
 }
 

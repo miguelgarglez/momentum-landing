@@ -316,7 +316,10 @@ export const landingContent: LandingContent = {
       { label: "Changelog", href: "/changelog" },
       { label: "GitHub", href: "https://github.com/miguelgarglez/momentum" },
     ],
-    signature: "Built by miguelgarglez",
+    signature: {
+      label: "Built by Miguel García",
+      href: "https://miguel.garglez.github.io",
+    },
     copyright: "© 2026 Momentum",
   },
 };
