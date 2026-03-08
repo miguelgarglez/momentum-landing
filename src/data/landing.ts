@@ -276,28 +276,33 @@ export const landingContent: LandingContent = {
     primaryLabel: "Download latest release",
     secondaryLabel: "View all releases",
     helper:
-      "Direct links to official release assets published in the repository.",
+      "Official GitHub release files, shared directly by the developer. macOS may show its standard warning for apps downloaded from the internet. Momentum is local-first and keeps your data on your Mac by default.",
   },
   faq: [
     {
-      question: "Is Momentum a production app or a portfolio project?",
+      question: "What should I expect when opening Momentum on macOS?",
       answer:
-        "Both. It is a working macOS app with active release history, and it is also published to showcase end-to-end product engineering work.",
+        "Because Momentum is distributed directly through GitHub releases, macOS may show its standard warning for apps downloaded from the internet. That is expected for this type of indie distribution and does not mean the app is unsafe.",
     },
     {
       question: "What data leaves my device?",
       answer:
-        "None by default. Momentum is designed as local-first and stores tracking data on-device, with privacy controls available in settings.",
+        "None by default. Momentum is built as a local-first macOS app and stores tracking data on your device, with privacy controls available in settings.",
+    },
+    {
+      question: "Where does the download come from?",
+      answer:
+        "The download buttons on this page point to the official GitHub releases for Momentum, where each version is published with its release notes and macOS artifacts.",
+    },
+    {
+      question: "Is Momentum a production app or a portfolio project?",
+      answer:
+        "Both. It is a real macOS app with active releases, and it is also shared publicly to showcase end-to-end product design and engineering work.",
     },
     {
       question: "Does it support manual tracking and Raycast?",
       answer:
         "Yes. You can run manual sessions from the app, and the Raycast extension can list projects, control tracking, and open conflict resolution.",
-    },
-    {
-      question: "Where can I download the app?",
-      answer:
-        "Use the download CTA on this page to open the latest GitHub release. DMG and ZIP files are available in the release assets.",
     },
   ],
   footer: {
