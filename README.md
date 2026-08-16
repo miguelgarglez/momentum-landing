@@ -1,23 +1,5 @@
 # Momentum Landing
 
-Landing page for **Momentum**, a local-first macOS time tracking app.
+> **Archived (August 2026).** The product is paused. This landing is no longer published.
 
-![Momentum landing preview](public/images/momentum/dashboard-overview-light.png)
-
-## Download app
-
-[Download latest Momentum release](https://github.com/miguelgarglez/momentum/releases/latest)
-
-## Run
-
-```bash
-npm install
-npm run dev
-```
-
-## Build
-
-```bash
-npm run build
-npm run preview
-```
+The app case study lives at [miguelgarglez.com/projects/momentum](https://miguelgarglez.com/projects/momentum/). App source: [miguelgarglez/momentum](https://github.com/miguelgarglez/momentum).
